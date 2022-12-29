@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/image/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./src/app.js" defer></script>
+    <title>꿀소비 | Expense Tracker</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="backdrop" class="backdrop"></div>
+        <div id="modal-container" class="modal-container">
+            <div id="modal" class="modal">
+                <div class="line__horizontal"></div>
+                <div class="modal-header">
+                    <h2><strong>
+                            새로운 거래 내역
+                        </strong>
+                    </h2>
+                </div>
+                <div class="modal-content">
+                    <div id="alert" class="alert">
+                        <p>유효한 값을 입력해주세요.</p>
+                    </div>
+                    <form id="modal-form" class="modal-form">
+                        <div class="form-control">
+                            <label for="date">날짜</label>
+                            <input class="form-input" type="date" id="date" min="2021-01-01" max="2023-12-31"
+                                required />
+                        </div>
+                        <div class="form-control">
+                            <label for="content">내용</label>
+                            <input class="form-input" type="text" id="content" maxlength="10" placeholder="내용을 입력하세요"
+                                required />
+                        </div>
+                        <div class="form-control">
+                            <label for="amount">금액</label>
+                            <input class="form-input" type="number" id="amount"
+                                placeholder="금액을 입력하세요. (예: 1000, -1000)" required />
+                        </div>
+                        <div class="btn-container">
+                            <button type="button" id="btn--cancle" class="modal-btn cancle">
+                                취소
+                            </button>
+                            <button type="submit" id="btn--submit" class="modal-btn submit">추가</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <section class="screen">
+            <nav>
+                <div>
+                    <img src="./assets/image/time.png" alt="time" />
+                </div>
+                <div>
+                    <img src="./assets/image/phone.png" alt="phone status" />
+                </div>
+            </nav>
+            <header>
+                <h2>김예은님의 <strong>꿀소비</strong></h2>
+                <button id="btn--show" class="show-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </header>
+            <aside>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <span>🍯</span>
+                            <p>오늘도 <strong>꿀소비</strong>로 <br />
+                                지출을 기록하고 예산을 관리하세요.</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>🎯</span>
+                            <p><strong>꿀소비</strong>와 함께 <br />
+                                실현가능한 목표를 계획해보세요!</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>💰</span>
+                            <p>매일 매일 작은 소비 습관<br />
+                                꿀처럼 좋은 습관, <strong>꿀소비</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+            <div class="account">
+                <h3>나의 꿀단지</h3>
+                <h1 id="balance">₩ 0</h1>
+                <div class="status">
+                    <div>
+                        <h4>수입</h4>
+                        <span id="sum--income" class="sum income">0</span>
+                    </div>
+                    <div class="vertical-line"></div>
+                    <div>
+                        <h4>지출</h4>
+                        <span id="sum--expense" class="sum expense">0</span>
+                    </div>
+                </div>
+            </div>
+            <article class="history">
+                <div class="filter-container">
+                    <select id="filter" class="filter">
+                        <option selected value='전체'>전체 내역</option>
+                        <option value='수입'>수입 내역</option>
+                        <option value='지출'>지출 내역</option>
+                    </select>
+                </div>
+                <ul id="lists" class="lists">
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+
+</html>
