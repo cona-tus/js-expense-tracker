@@ -15,11 +15,10 @@
 3. [주요 기능](#3-주요-기능)  
    3.1. [거래 내역 추가](#31-거래-내역-추가)  
    3.2. [로컬 스토리지 저장](#32-로컬-스토리지-저장)  
-   3.3. [UI 업데이트](#33-ui-업데이트)  
-   3.4. [거래 내역 합산](#34-거래-내역-합산)  
-   3.5. [거래 내역 삭제](#35-거래-내역-삭제)  
-   3.6. [거래 목록 날짜 정렬](#36-거래-목록-날짜-정렬)  
-   3.7. [거래 내역 카테고리화](#37-거래-내역-카테고리화)
+   3.3. [거래 내역 합산](#34-거래-내역-합산)  
+   3.4. [거래 내역 삭제](#35-거래-내역-삭제)  
+   3.5. [거래 목록 날짜 정렬](#36-거래-목록-날짜-정렬)  
+   3.6. [거래 내역 카테고리화](#37-거래-내역-카테고리화)
 4. [UI/UX](#4-uiux)  
    4.1. [모달창 여닫기](#41-모달창-여닫기)  
    4.2. [마우스 오버 시 삭제 버튼 활성화](#42-마우스-오버-시-삭제-버튼-활성화)
@@ -53,7 +52,7 @@
 
 ## 3.1. 거래 내역 추가
 
-![honey-add](https://user-images.githubusercontent.com/90844424/210036304-d957ab1a-1bdb-472b-aae9-89864b08c301.gif)
+![honey-add](https://user-images.githubusercontent.com/90844424/210037931-340bad88-8393-46db-b887-b93b5465cfa1.gif)
 
 사용자가 날짜와 내용, 금액을 입력하여 항목을 추가할 수 있습니다. 입력 시 공백 제거와 최대 글자수 조건을 부여하여 간단한 유효성 검사를 수행합니다. 입력값이 유효하다면 transaction에 입력값을 할당하고 로컬스토리지에 저장합니다. 양식 제출 후에는 입력칸이 초기화됩니다.
 
@@ -100,9 +99,9 @@ const onAdd = (event) => {
 
 <br/>
 
-## 3.2. 로컬 스토리지 저장
+## 3.2. 로컬 스토리지 저장 및 UI 업데이트
 
-![honey-localstorage](https://user-images.githubusercontent.com/90844424/210036613-0b4905cc-ef95-4e06-b3ef-a59b58507ec3.gif)
+![honey-localstorage](https://user-images.githubusercontent.com/90844424/210038137-4d336365-dc81-44d1-80a2-ed47f838aa76.gif)
 
 updateLocalStorage() 함수를 만들어서 사용자가 제출한 양식 데이터를 로컬스토리지에 저장 가능하게 했습니다. 이 함수는 항목을 삭제할 때도 호출되며, 화면상의 데이터와 호환됩니다.
 
@@ -117,11 +116,7 @@ const updateLocalStorage = () => {
 
 <br/>
 
-## 3.3. UI 업데이트
-
-![honey-ui](https://user-images.githubusercontent.com/90844424/210028782-8fe36f45-d43c-484b-940a-9d6928ddfa6c.gif)
-
-새로운 아이템을 추가할 때 renderList() 함수가 호출되어 폼에 전달된 값을 HTML로 출력하고, DOM 목록에 반영합니다. 목록의 가독성이 좋도록 스타일링하기 위해서 transaction의 날짜를 받아와 각각 div 태그 안에 배치하였습니다. 또한 합산에 용이하도록 Math.abs() 메서드를 이용하여 값을 양수로 전환 후, 음수와 양수에 맞게 기호(+, -)를 붙여주었습니다.
+새로운 아이템을 추가할 때 renderList() 함수가 호출되어 폼에 전달된 값을 HTML로 출력하고, DOM 목록에 반영합니다. 목록의 가독성이 좋도록 스타일링하기 위해서 transaction의 날짜를 받아와 각각 div 태그 안에 배치하였습니다. 또한 합산에 용이하도록 Math.abs() 메서드를 이용하여 값을 양수로 전환 후, 음수와 양수에 맞게 기호(`+`, `-`)를 붙여주었습니다.
 
 ```js
 // Render list
@@ -162,7 +157,7 @@ const renderList = (transaction) => {
 
 <br/>
 
-## 3.4. 거래 내역 합산
+## 3.3. 거래 내역 합산
 
 ![honey-acc](https://user-images.githubusercontent.com/90844424/210036839-c1883559-9b8e-41d4-a562-c1a9f3060499.jpg)
 
@@ -196,9 +191,9 @@ const updateValues = () => {
 
 <br/>
 
-## 3.5. 거래 내역 삭제
+## 3.4. 거래 내역 삭제
 
-![honey-remove](https://user-images.githubusercontent.com/90844424/210036905-5c0a47ee-dd2a-4935-a9c7-3dcad9a112ca.gif)
+![honey-remove](https://user-images.githubusercontent.com/90844424/210038520-272d80a4-7deb-4008-a4e0-3bae06c90afe.gif)
 
 항목에 마우스 오버 시 삭제 버튼이 나타나 해당 아이템을 삭제할 수 있습니다. Array.filter() 메서드를 사용하여 삭제하고자 하는 항목의 id 값과 전달된 id값이 같지 않은 transaction 목록을 필터링합니다.
 
@@ -215,7 +210,7 @@ const onRemove = (id) => {
 
 <br/>
 
-## 3.6. 거래 목록 날짜 정렬
+## 3.5. 거래 목록 날짜 정렬
 
 ![honey-date](https://user-images.githubusercontent.com/90844424/210037077-564021f0-4567-4271-a4ce-ac612625b572.jpg)
 
@@ -240,9 +235,9 @@ const init = () => {
 
 <br/>
 
-## 3.7. 거래 내역 카테고리화
+## 3.6. 거래 내역 카테고리화
 
-![honey-category](https://user-images.githubusercontent.com/90844424/210037228-99149b77-24fb-40cd-8d14-d5158f99a216.gif)
+![honey-category](https://user-images.githubusercontent.com/90844424/210038678-7fb4efac-18c2-42b9-8d9f-e40ac848c195.gif)
 
 '전체', '수입', '지출'이라는 카테고리를 만들어 거래 목록을 선별할 수 있도록 만들었습니다. 옵션을 변경할 때 옵션 값과 타겟의 값이 같은지 확인한 뒤, 금액(음수/양수)으로 필터링합니다. 이렇게 만들어진 새로운 배열을 renderList() 함수에 전달하여 화면에 렌더링합니다.
 
@@ -278,9 +273,9 @@ const onFilter = (event) => {
 
 ## 4.1. 모달창 여닫기
 
-![honey-modal](https://user-images.githubusercontent.com/90844424/210037353-f54f5e31-f5bd-4f69-a0b0-40d4b92698dc.gif)
+![honey-modal](https://user-images.githubusercontent.com/90844424/210038769-b32844ef-825e-467c-9623-60673b3ea055.gif)
 
-우측 상단의 + 버튼을 눌러 모달창을 열 수 있으며, 배경이나 취소 버튼을 클릭하면 모달창이 닫힙니다. DOM요소에 visible 클래스를 추가하여 작동합니다.
+우측 상단의 `+` 버튼을 눌러 모달창을 열 수 있으며, 배경이나 취소 버튼을 클릭하면 모달창이 닫힙니다. DOM요소에 visible 클래스를 추가하여 작동합니다.
 
 ```js
 const onCancle = () => {
