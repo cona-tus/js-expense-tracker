@@ -1,6 +1,6 @@
 # 🍯 가계부 앱, '꿀소비' 토이프로젝트
 
-<img width="800" alt="honey-thumb" src="https://user-images.githubusercontent.com/90844424/209909689-e4d5e4c7-a8c9-4120-bf3e-f34011d19c69.png">
+![honey-thumb](https://user-images.githubusercontent.com/90844424/210034736-a5799b0c-f554-40de-86cf-abd5cccac867.jpg)
 
 <br/>
 
@@ -30,7 +30,7 @@
 
 ## 1.1. 프로젝트 설명
 
-본 프로젝트는 가계부 애플리케이션 입니다. 모바일 전용으로 기획하여 아이폰(iPhone 14, 13Pro, 13, 12Pro) 비율에 맞춰 작업했습니다. 주요 기능은 수입과 지출을 입력하여 거래 내역을 합산하는 것입니다. 이러한 간단한 기능에 부합하는 사용자 경험을 구현하고자 싱글페이지에 심플하고 직관적으로 디자인했습니다.
+본 프로젝트는 **가계부 애플리케이션** 입니다. 모바일 전용으로 기획하여 아이폰(iPhone 14, 13Pro, 13, 12Pro) 비율에 맞춰 작업했습니다. <u>주요 기능은 수입과 지출을 입력하여 거래 내역을 합산하는 것</u>입니다. 이러한 간단한 기능에 부합하는 사용자 경험을 구현하고자 싱글페이지에 심플하고 직관적으로 디자인했습니다.
 
 <br/>
 
@@ -40,18 +40,20 @@
 - 개인 프로젝트 (1인)
 
 <br/>
+<br/>
 
 # 2. 사용 기술
 
 ![HTML](https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![SCSS](https://img.shields.io/badge/Sass-bf4080?style=for-the-badge&logo=Sass&logoColor=ffffff) ![JAVASCRIPT](https://img.shields.io/badge/JavaScript-f6e158?style=for-the-badge&logo=JavaScript&logoColor=ffffff) ![Git](https://img.shields.io/badge/Git-f05032?style=for-the-badge&logo=git&logoColor=ffffff)
 
 <br/>
+<br/>
 
 # 3. 주요 기능
 
 ## 3.1. 거래 내역 추가
 
-![honey-add](https://user-images.githubusercontent.com/90844424/209914283-32e418ab-dba9-47ac-88b3-ac980dd808e7.gif)
+![honey-add](https://user-images.githubusercontent.com/90844424/210036304-d957ab1a-1bdb-472b-aae9-89864b08c301.gif)
 
 사용자가 날짜와 내용, 금액을 입력하여 항목을 추가할 수 있습니다. 입력 시 공백 제거와 최대 글자수 조건을 부여하여 간단한 유효성 검사를 수행합니다. 입력값이 유효하다면 transaction에 입력값을 할당하고 로컬스토리지에 저장합니다. 양식 제출 후에는 입력칸이 초기화됩니다.
 
@@ -100,7 +102,7 @@ const onAdd = (event) => {
 
 ## 3.2. 로컬 스토리지 저장
 
-![honey-localstorage](https://user-images.githubusercontent.com/90844424/209917642-9f8870eb-4f96-4276-aa46-16a4e39d7f18.gif)
+![honey-localstorage](https://user-images.githubusercontent.com/90844424/210036613-0b4905cc-ef95-4e06-b3ef-a59b58507ec3.gif)
 
 updateLocalStorage() 함수를 만들어서 사용자가 제출한 양식 데이터를 로컬스토리지에 저장 가능하게 했습니다. 이 함수는 항목을 삭제할 때도 호출되며, 화면상의 데이터와 호환됩니다.
 
@@ -162,7 +164,7 @@ const renderList = (transaction) => {
 
 ## 3.4. 거래 내역 합산
 
-<img width="800" alt="honey-acc" src="https://user-images.githubusercontent.com/90844424/210026386-31b8a72d-48f2-4b6f-a6ce-716132eced82.png">
+![honey-acc](https://user-images.githubusercontent.com/90844424/210036839-c1883559-9b8e-41d4-a562-c1a9f3060499.jpg)
 
 updateValues() 함수를 통해 수입과 지출의 합계를 나타내도록 했습니다. 수입과 지출은 각각 Array.filter()와 Array.reduce() 메서드를 사용해 소계를 계속해서 덧붙여 합산되도록 했습니다. 또한 Array.toLocaleString() 메서드로 액수의 천 단위마다 콤마(,)를 표시했습니다.
 
@@ -196,7 +198,7 @@ const updateValues = () => {
 
 ## 3.5. 거래 내역 삭제
 
-![honey-remove](https://user-images.githubusercontent.com/90844424/210030326-8f3777b9-1440-47fb-b619-da58a42570da.gif)
+![honey-remove](https://user-images.githubusercontent.com/90844424/210036905-5c0a47ee-dd2a-4935-a9c7-3dcad9a112ca.gif)
 
 항목에 마우스 오버 시 삭제 버튼이 나타나 해당 아이템을 삭제할 수 있습니다. Array.filter() 메서드를 사용하여 삭제하고자 하는 항목의 id 값과 전달된 id값이 같지 않은 transaction 목록을 필터링합니다.
 
@@ -215,7 +217,7 @@ const onRemove = (id) => {
 
 ## 3.6. 거래 목록 날짜 정렬
 
-<img width="800" alt="honey-date" src="https://user-images.githubusercontent.com/90844424/210029955-ccc58f03-8c64-4b11-837b-a0b9f4942202.png">
+![honey-date](https://user-images.githubusercontent.com/90844424/210037077-564021f0-4567-4271-a4ce-ac612625b572.jpg)
 
 거래 내역을 등록한 순서가 아니라, 가장 최신 항목이 위에 보이도록 날짜를 내림차순으로 정렬했습니다. 폼을 제출할 때마다 init() 함수에서 호출됩니다.
 
@@ -240,7 +242,7 @@ const init = () => {
 
 ## 3.7. 거래 내역 카테고리화
 
-![honey-category](https://user-images.githubusercontent.com/90844424/210032220-06a61aba-310b-463b-b743-6bb687eb0622.gif)
+![honey-category](https://user-images.githubusercontent.com/90844424/210037228-99149b77-24fb-40cd-8d14-d5158f99a216.gif)
 
 '전체', '수입', '지출'이라는 카테고리를 만들어 거래 목록을 선별할 수 있도록 만들었습니다. 옵션을 변경할 때 옵션 값과 타겟의 값이 같은지 확인한 뒤, 금액(음수/양수)으로 필터링합니다. 이렇게 만들어진 새로운 배열을 renderList() 함수에 전달하여 화면에 렌더링합니다.
 
@@ -270,12 +272,13 @@ const onFilter = (event) => {
 ```
 
 <br/>
+<br/>
 
 # 4. UI/UX
 
 ## 4.1. 모달창 여닫기
 
-![honey-modal](https://user-images.githubusercontent.com/90844424/210032446-9d7b7b85-47a8-41bd-8cb3-fd2a63f64345.gif)
+![honey-modal](https://user-images.githubusercontent.com/90844424/210037353-f54f5e31-f5bd-4f69-a0b0-40d4b92698dc.gif)
 
 우측 상단의 + 버튼을 눌러 모달창을 열 수 있으며, 배경이나 취소 버튼을 클릭하면 모달창이 닫힙니다. DOM요소에 visible 클래스를 추가하여 작동합니다.
 
@@ -307,7 +310,7 @@ const onShowModal = () => {
 
 ## 4.2. 마우스 오버 시 삭제 버튼 활성화
 
-<img width="800" alt="honey-removebutton" src="https://user-images.githubusercontent.com/90844424/210032894-906a45ca-4b44-4050-a8cf-20c6fb33ce94.png">
+![honey-removebutton](https://user-images.githubusercontent.com/90844424/210037427-9ecc0aa6-7144-4c8b-87c7-186a03c53f73.jpg)
 
 아이폰의 밀어서 삭제하는 기능을 단순화하여 마우스 오버 시 삭제 버튼을 클릭할 수 있도록 했습니다. 마우스가 들어오고 나갈 때 부드럽게 트랜지션됩니다.
 
