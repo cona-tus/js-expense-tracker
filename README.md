@@ -17,7 +17,7 @@
 
 <br/>
 
-## 1-2. Project Duration & Participants
+### 1-2. Project Duration & Participants
 
 - 2022-12-23 ~ 2022-12-26
 - 개인 프로젝트 (1인)
