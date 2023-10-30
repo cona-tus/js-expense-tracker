@@ -38,12 +38,12 @@
 
 ## 3. Main Features
 
-1. [거래 내역 추가]()
-2. [로컬 스토리지에 데이터 저장]()
-3. [거래 내역 합산]()
-4. [거래 내역 삭제]()
-5. [거래 내역 정렬]()
-6. [거래 내역 카테고리화]()
+1. [거래 내역 추가](#3-1-add-a-transaction)
+2. [로컬 스토리지에 데이터 저장](#3-2-save-to-local-storage-and-update-ui)
+3. [거래 내역 합산](#3-3-sum-up-transactions)
+4. [거래 내역 삭제](#3-4-delete-transaction)
+5. [거래 내역 정렬](#3-5-sort-transactions-by-date)
+6. [거래 내역 카테고리화](#3-6-categorize-transactions)
 
 <br/>
 
@@ -353,4 +353,4 @@ const onShowModal = () => {
 <br/>
 <br/>
 
-[맨위로 이동하기]()
+[맨위로 이동하기](#-가계부-앱-꿀소비-토이프로젝트)
