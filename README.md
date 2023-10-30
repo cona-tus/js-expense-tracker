@@ -4,7 +4,7 @@
 
 <br/>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/abf9be66-f2c7-4dab-a70c-1411602c81ac/deploy-status)](https://app.netlify.com/sites/conatus-js-expense-tracker/deploys) | [Live Demo](https://conatus-js-expense-tracker.netlify.app/)
+🔗 꿀소비 [[Live Demo](https://conatus-js-expense-tracker.netlify.app/)]
 
 <br/>
 <br/>
@@ -13,7 +13,11 @@
 
 ### 1-1. Project Description
 
-본 프로젝트는 **가계부 애플리케이션** 입니다. 주요 기능은 수입과 지출을 입력하여 거래 내역을 합산하는 것입니다. 이러한 기능을 지원하기 위해 모바일 비율의 싱글 페이지로 디자인하여 간편한 사용자 경험을 구현하였습니다.
+본 프로젝트는 가계부 애플리케이션입니다. 주요 기능은 수입과 지출을 입력하여 거래 내역을 합산하는 것입니다. 모바일 비율의 싱글 페이지로 디자인하여 간편한 사용자 경험을 구현하였습니다.
+
+<br/>
+
+<sub>\* 본 애플리케이션은 인터넷 강의를 참고하여 만들었으나, 필요하다고 판단되는 부분에서 원본 코드를 수정했습니다. 그리고 로컬 스토리지에 저장, 날짜별 정렬, 카테고리화, 모달창 기능을 추가하였습니다. 또한 새롭게 디자인했습니다.</sub>
 
 <br/>
 
@@ -34,14 +38,23 @@
 
 ## 3. Main Features
 
+1. [거래 내역 추가]()
+2. [로컬 스토리지에 데이터 저장]()
+3. [거래 내역 합산]()
+4. [거래 내역 삭제]()
+5. [거래 내역 정렬]()
+6. [거래 내역 카테고리화]()
+
+<br/>
+
 ### 3-1. Add a Transaction
 
 ![honey-add](https://user-images.githubusercontent.com/90844424/210037931-340bad88-8393-46db-b887-b93b5465cfa1.gif)
 
-사용자는 날짜, 내용, 금액을 입력하여 새로운 항목을 추가할 수 있습니다. 입력 시 공백 제거와 최대 글자수 조건을 적용하여 간단한 유효성 검사를 수행합니다. 입력값이 유효하면, transaction에 입력 값을 할당하고 로컬스토리지에 저장합니다. 양식을 제출한 후에는 입력 칸이 자동으로 초기화됩니다.
+사용자는 날짜, 내용, 금액을 입력하여 새로운 항목을 추가할 수 있습니다. 입력 시 공백 제거와 최대 글자 수 조건을 적용하여 간단한 유효성 검사를 수행합니다. 입력값이 유효하면, transaction에 입력 값을 할당하고 로컬 스토리지에 저장합니다. 양식을 제출한 후에는 입력 칸이 자동으로 초기화됩니다.
 
 ```js
-// Add transaction to list
+// 거래 내역 추가
 const onAdd = (event) => {
   event.preventDefault();
 
@@ -82,15 +95,16 @@ const onAdd = (event) => {
 ```
 
 <br/>
+<br/>
 
 ### 3-2. Save to Local Storage and Update UI
 
 ![honey-localstorage](https://user-images.githubusercontent.com/90844424/210038137-4d336365-dc81-44d1-80a2-ed47f838aa76.gif)
 
-사용자가 제출한 양식 데이터를 로컬 스토리지에 저장할 수 있도록 updateLocalStorage() 함수를 생성했습니다. 이 함수는 항목을 삭제할 때에도 호출되며, 화면에 표시된 데이터와 일치하도록 설계되었습니다.
+사용자가 제출한 양식 데이터를 로컬 스토리지에 저장할 수 있도록 `updateLocalStorage()` 함수를 생성했습니다. 이 함수는 항목을 삭제할 때에도 호출되며, 화면에 표시된 데이터와 일치하도록 설계되었습니다.
 
 ```js
-// Save data in localStorage
+// 로컬 스토리지에 데이터 저장
 const localStorageItems = JSON.parse(localStorage.getItem('transactions'));
 
 const updateLocalStorage = () => {
@@ -100,10 +114,10 @@ const updateLocalStorage = () => {
 
 <br/>
 
-새로운 아이템이 추가될 때는 renderList() 함수가 호출되어 폼에서 전달된 값을 HTML로 출력하고 DOM 목록에 업데이트합니다. 목록은 가독성을 높이기 위해 transaction의 날짜를 가져와서 각 div 태그 내에 배치하였습니다. 또한, 합산에 용이하도록 Math.abs() 메서드를 이용하여 값을 양수로 변환하고, 음수와 양수에 맞게 기호(`+`, `-`)가 추가되도록 처리하였습니다.
+새로운 아이템이 추가될 때는 `renderList()` 함수가 호출되어 폼에서 전달된 값을 HTML로 출력하고 DOM 목록에 업데이트합니다. 목록은 가독성을 높이기 위해 transaction의 날짜를 가져와서 각 div 태그 내에 배치하였습니다. 또한, 합산에 용이하도록 `Math.abs()` 메서드를 이용하여 값을 양수로 변환하고, 음수와 양수에 맞게 기호(`+`, `-`)가 추가되도록 처리하였습니다.
 
 ```js
-// Render list
+// 목록 렌더링
 const renderList = (transaction) => {
   const date = new Date(transaction.date);
   const year = date.getFullYear();
@@ -140,15 +154,16 @@ const renderList = (transaction) => {
 ```
 
 <br/>
+<br/>
 
 ### 3-3. Sum Up Transactions
 
 ![honey-acc](https://user-images.githubusercontent.com/90844424/210036839-c1883559-9b8e-41d4-a562-c1a9f3060499.jpg)
 
-updateValues() 함수를 통해 수입과 지출의 총 합을 나타내도록 구현했습니다. 수입과 지출을 각각 Array.filter()와 Array.reduce() 메서드를 사용하여 소계를 계산하고, 누적하여 합산되되록 했습니다. 또한, Array.toLocaleString() 메서드를 활용하여 액수의 천 단위마다 쉼표(,)를 표시하여 가독성을 높였습니다.
+`updateValues()` 함수를 통해 수입과 지출의 총합을 나타내도록 구현했습니다. 수입과 지출을 각각 `filter()`와 `reduce()` 메서드를 사용하여 소계를 계산하고, 누적하여 합산되되록 했습니다. 또한, `toLocaleString()` 메서드를 활용하여 액수의 천 단위마다 쉼표(,)를 표시하여 가독성을 높였습니다.
 
 ```js
-// Update account values
+// 가계부 업데이트
 const updateValues = () => {
   const balance = document.getElementById('balance');
   const money_plus = document.getElementById('sum--income');
@@ -174,15 +189,16 @@ const updateValues = () => {
 ```
 
 <br/>
+<br/>
 
 ### 3-4. Delete Transaction
 
 ![honey-remove](https://user-images.githubusercontent.com/90844424/210038520-272d80a4-7deb-4008-a4e0-3bae06c90afe.gif)
 
-각 항목 위에 마우스를 올리면 삭제 버튼이 나타나며, 이를 통해 해당 아이템을 삭제할 수 있습니다. Array.filter() 메서드를 사용하여 삭제하고자 하는 항목의 id 값과 전달된 id값이 일치하지 않는 transaction 목록을 필터링합니다.
+각 항목 위에 마우스를 올리면 삭제 버튼이 나타나며, 이를 통해 해당 아이템을 삭제할 수 있습니다. `filter()` 메서드를 사용하여 삭제하고자 하는 항목의 id 값과 전달된 id 값이 일치하지 않는 transaction 목록을 필터링합니다.
 
 ```js
-// Remove items from list
+// 거래 내역 삭제
 const onRemove = (id) => {
   transactions = transactions.filter((transaction) => transaction.id !== id);
 
@@ -193,20 +209,20 @@ const onRemove = (id) => {
 ```
 
 <br/>
+<br/>
 
 ### 3-5. Sort Transactions by Date
 
 ![honey-date](https://user-images.githubusercontent.com/90844424/210037077-564021f0-4567-4271-a4ce-ac612625b572.jpg)
 
-등록한 순서가 아닌 최신 항목이 위에 표시되도록 날짜를 내림차순으로 정렬했습니다. 정렬 기능은 폼을 제출할 때마다 init() 함수에서 호출됩니다.
+등록한 순서가 아닌 최신 항목이 위에 표시되도록 날짜를 내림차순으로 정렬했습니다. 정렬 기능은 폼을 제출할 때마다 `init()` 함수에서 호출됩니다.
 
 ```js
-// Sort by date
+// 날짜별 정렬
 const sortDate = () => {
   return transactions.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
-// Initialize
 const init = () => {
   filter.options[0].selected = true;
   sortDate();
@@ -218,15 +234,16 @@ const init = () => {
 ```
 
 <br/>
+<br/>
 
 ### 3-6. Categorize Transactions
 
 ![honey-category](https://user-images.githubusercontent.com/90844424/210038678-7fb4efac-18c2-42b9-8d9f-e40ac848c195.gif)
 
-'전체', '수입', '지출'이라는 카테고리를 생성하여 거래 목록을 원하는 대로 선택할 수 있도록 구성했습니다. 옵션을 변경할 때 옵션 값과 타겟 값이 일치하는지 확인한 다음, 금액(음수/양수)을 기준으로 필터링합니다. 이렇게 필터링된 새로운 배열을 renderList() 함수에 전달하여 화면에 렌더링합니다.
+'전체', '수입', '지출'이라는 카테고리를 생성하여 거래 목록을 원하는 대로 선택할 수 있도록 구성했습니다. 옵션을 변경할 때 옵션 값과 타겟 값이 일치하는지 확인한 다음, 금액(음수/양수)을 기준으로 필터링합니다. 이렇게 필터링 된 새로운 배열을 `renderList()` 함수에 전달하여 화면에 렌더링 합니다.
 
 ```js
-// Change select options
+// 옵션 변경
 const onFilter = (event) => {
   event.preventDefault();
 
@@ -259,7 +276,7 @@ const onFilter = (event) => {
 
 ![honey-modal](https://user-images.githubusercontent.com/90844424/210038769-b32844ef-825e-467c-9623-60673b3ea055.gif)
 
-우측 상단의 `+` 버튼을 클릭하면 모달창이 열리며, 배경이나 취소 버튼을 클릭하면 모달창이 닫힙니다. 이 기능은 DOM요소에 visible 클래스를 추가하여 구현됩니다.
+우측 상단의 `+` 버튼을 클릭하면 모달창이 열리며, 배경이나 취소 버튼을 클릭하면 모달창이 닫힙니다. 이 기능은 DOM 요소에 `visible` 클래스를 추가하여 구현됩니다.
 
 ```js
 const onCancle = () => {
@@ -286,12 +303,13 @@ const onShowModal = () => {
 ```
 
 <br/>
+<br/>
 
 ### 4-2. Activate Delete Button
 
 ![honey-removebutton](https://user-images.githubusercontent.com/90844424/210037427-9ecc0aa6-7144-4c8b-87c7-186a03c53f73.jpg)
 
-아이폰의 '밀어서 삭제하기' 기능을 단순화하여 구현하였습니다. 마우스를 항목 위로 올리면 삭제 버튼이 활성화됩니다. 이러한 동작은 부드럽게 트랜지션됩니다.
+아이폰의 '밀어서 삭제하기' 기능을 단순화하여 구현하였습니다. 마우스를 항목 위로 올리면 삭제 버튼이 활성화됩니다. 이러한 동작은 부드럽게 트랜지션 됩니다.
 
 ```scss
 .list {
@@ -335,4 +353,4 @@ const onShowModal = () => {
 <br/>
 <br/>
 
-<sub>\* 본 애플리케이션은 인터넷 강의를 참고하여 만들었으나, 필요하다고 판단되는 부분에서 원본 코드를 수정하고 기능을 보완했습니다. 또한 새롭게 디자인했습니다.</sub>
+[맨위로 이동하기]()
